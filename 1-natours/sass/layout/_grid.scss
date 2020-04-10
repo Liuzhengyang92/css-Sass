@@ -5,6 +5,15 @@
   &:not(:last-child) {
     //do margin to all element except the last child
     margin-bottom: $gutter-vertical;
+
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
+  }
+
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
   }
 
   @include clearfix;
@@ -14,7 +23,17 @@
     float: left;
 
     &:not(:last-child) {
-      margin-right: $gutter-horizontal
+      margin-right: $gutter-horizontal;
+
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    //change all columns to 100% width when the screen size is smaller than tab-port
+    @include respond(tab-port) {
+      width: 100% !important; //import here is to make sure its original width has been overwritten.
     }
   }
 
